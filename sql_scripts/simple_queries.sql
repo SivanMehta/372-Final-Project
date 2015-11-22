@@ -1,4 +1,4 @@
-\c
+\c uber
 
 -- get total number of trips done for each driver
 select first_name, last_name, count(tripid)
