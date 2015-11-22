@@ -8,7 +8,7 @@ CREATE DATABASE Uber;
 
 CREATE TABLE Users
 (
-  userID       varchar(10)  NOT NULL,
+  userID       SERIAL PRIMARY KEY,
   first_name   varchar(50)  NOT NULL,
   last_name    varchar(50)  NOT NULL,
   picture      varchar(255),
@@ -21,8 +21,8 @@ CREATE TABLE Users
 
 CREATE TABLE Cars
 (
-  carID        varchar(10)  NOT NULL,
-  userID       varchar(10)  NOT NULL,
+  carID        SERIAL PRIMARY KEY,
+  userID       int,
   make         varchar(50),
   model        varchar(50),
   year         varchar(50),
@@ -38,11 +38,11 @@ CREATE TABLE Cars
 
 CREATE TABLE CreditCards
 (
-  credit_cardID    		varchar(10)  NOT NULL,
+  credit_cardID    		SERIAL PRIMARY KEY,
   credit_card_number    varchar(50),
   expiration 			varchar(50),
   cvv2					varchar(50),
-  userID		    	varchar(10)  NOT NULL
+  userID		    	int
 );
 
 -------------------------
@@ -51,14 +51,14 @@ CREATE TABLE CreditCards
 
 CREATE TABLE Trips
 (
-  tripID       		varchar(10)  NOT NULL,
+  tripID       		SERIAL PRIMARY KEY,
   trip_timestamp    varchar(50),
   duration			varchar(50),
   pickup	   		varchar(50),
   destination  		varchar(50),
   fare         		varchar(50),
-  driverID     		varchar(10)  NOT NULL,
-  credit_cardID    	varchar(10)  NOT NULL
+  driverID     		int,
+  credit_cardID    	int
 );
 
 -------------------------
@@ -67,20 +67,11 @@ CREATE TABLE Trips
 
 CREATE TABLE Ratings
 (
-  ratingID    varchar(10)  NOT NULL,
+  ratingID    SERIAL PRIMARY KEY,
   rating      int NOT NULL,
-  userID     	varchar(10)  NOT NULL,
-  tripID    	varchar(10)  NOT NULL
+  userID      int,
+  tripID      int
 );
-
-----------------------
--- Define primary keys
-----------------------
-ALTER TABLE Users ADD PRIMARY KEY (userID);
-ALTER TABLE Cars ADD PRIMARY KEY (carID);
-ALTER TABLE CreditCards ADD PRIMARY KEY (credit_cardID);
-ALTER TABLE Trips ADD PRIMARY KEY (tripID);
-ALTER TABLE Ratings ADD PRIMARY KEY (ratingID);
 
 ----------------------
 -- Define foreign keys
