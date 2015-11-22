@@ -74,15 +74,6 @@ CREATE TABLE Ratings
 );
 
 ----------------------
--- Define primary keys
-----------------------
-ALTER TABLE Users ADD PRIMARY KEY (userID);
-ALTER TABLE Cars ADD PRIMARY KEY (carID);
-ALTER TABLE CreditCards ADD PRIMARY KEY (credit_cardID);
-ALTER TABLE Trips ADD PRIMARY KEY (tripID);
-ALTER TABLE Ratings ADD PRIMARY KEY (ratingID);
-
-----------------------
 -- Define foreign keys
 ----------------------
 ALTER TABLE Cars ADD CONSTRAINT FK_Cars_Users FOREIGN KEY (userID) REFERENCES Users (userID);
