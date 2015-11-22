@@ -1,0 +1,12 @@
+As a <role>,I want to <goal>,So that I can <reason>
+Driver,get a ride destination,deliver the passenger
+Driver,get pickup destination,pick up the passenger
+Driver,receive payment,receive payment
+Driver,update my car,have accurate information
+Driver,see the Customer’s rating,pick a good Customer
+Customer, indicate my location,get picked up by the Driver
+Customer, indicate destination,get delivered by the Driver
+Customer, pay the Driver,pay the Driver
+Customer, see all drivers,pick the closest one
+Customer, store my credit cards,pay easily
+Customer,see the Driver’s rating,pick the best Driver
