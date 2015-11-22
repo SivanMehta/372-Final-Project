@@ -11,3 +11,6 @@ SELECT *
 
 SELECT *
   FROM trips;
+
+SELECT *
+  FROM ratings;
