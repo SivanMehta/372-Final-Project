@@ -61,6 +61,18 @@ CREATE TABLE Trips
   credit_cardID    	varchar(10)  NOT NULL
 );
 
+-------------------------
+-- Create Ratings table
+-------------------------
+
+CREATE TABLE Ratings
+(
+  ratingID    varchar(10)  NOT NULL,
+  rating      int NOT NULL,
+  userID     	varchar(10)  NOT NULL,
+  tripID    	varchar(10)  NOT NULL
+);
+
 ----------------------
 -- Define primary keys
 ----------------------
@@ -68,6 +80,7 @@ ALTER TABLE Users ADD PRIMARY KEY (userID);
 ALTER TABLE Cars ADD PRIMARY KEY (carID);
 ALTER TABLE CreditCards ADD PRIMARY KEY (credit_cardID);
 ALTER TABLE Trips ADD PRIMARY KEY (tripID);
+ALTER TABLE Ratings ADD PRIMARY KEY (ratingID);
 
 ----------------------
 -- Define foreign keys
@@ -76,3 +89,5 @@ ALTER TABLE Cars ADD CONSTRAINT FK_Cars_Users FOREIGN KEY (userID) REFERENCES Us
 ALTER TABLE CreditCards ADD CONSTRAINT FK_CreditCards_Customers FOREIGN KEY (userID) REFERENCES Users (userID);
 ALTER TABLE Trips ADD CONSTRAINT FK_Trips_Users FOREIGN KEY (driverID) REFERENCES Users (userID);
 ALTER TABLE Trips ADD CONSTRAINT FK_Trips_CreditCards FOREIGN KEY (credit_cardID) REFERENCES CreditCards (credit_cardID);
+ALTER TABLE Ratings ADD CONSTRAINT FK_Ratings_Users FOREIGN KEY (userID) REFERENCES Users (userID);
+ALTER TABLE Ratings ADD CONSTRAINT FK_Ratings_Trips FOREIGN KEY (tripID) REFERENCES Trips (tripID);
