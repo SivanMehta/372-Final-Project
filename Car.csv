@@ -1,0 +1,8 @@
+carID,userID,make,model,year,color,picture,seats,status
+1,2,Ford,Mustang,1965,Red,car1.png,2,XL
+2,3,Toyota,Camry,2015,Grey,car2.png,5,X
+3,4,Buick,LaCrosse,2011,Beige,car3.png,5,X
+4,4,Lamborghini,Gallardo,2016,Lime,car4.png,2,XL
+5,5,Honda,Accord,2000,Blue,car5.png,4,XL
+6,6,Oldsmobile,Cutlass,1980,Orange,car6.png,6,XL
+7,6,Sooriamurthi,Datamobile,1965,Brown,car7.png,67,Black
