@@ -5,8 +5,9 @@ To see the report, go [here](https://docs.google.com/document/d/1EYCLA8-f75D0Yoq
 1. Choose between Airbnb and Uber **DONE**
     * Chose Uber
 2. Identify 3 users and 10 user stories
-    * You can see these in `docs/user_stories.csv`
+    * You can see this in `docs/user_stories.csv`
 3. Conceptual Model in UML
+    * You can see this at `docs/Uber UML.png`
 4. Relational Schema in Text Format
     * You can see this in `docs/relational_model.md`
 5. Functional Dependencies
