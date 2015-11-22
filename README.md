@@ -2,7 +2,8 @@ To see the report, go [here](https://docs.google.com/document/d/1EYCLA8-f75D0Yoq
 
 ## Tasks
 
-1. Choose between Airbnb and Uber
+1. Choose between Airbnb and Uber **DONE**
+    * Chose Uber
 2. Identify 3 users and 10 user stories
 3. Conceptual Model in UML
 4. Relational Schema in Text Format
