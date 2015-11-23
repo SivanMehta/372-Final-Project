@@ -5,15 +5,13 @@ To grab the CSV for initializing, go [here](https://docs.google.com/a/andrew.cmu
 ## Tasks
 
 1. Choose between Airbnb and Uber **DONE**
-    * Chose Uber
-2. Identify 3 users and 10 user stories
-    * You can see this in `docs/user_stories.csv`
-3. Conceptual Model in UML
-    * You can see this at `docs/Uber UML.png`
-4. Relational Schema in Text Format
-    * You can see this in `docs/relational_model.md`
-5. Functional Dependencies
+2. Identify 3 users and 10 user stories **In Wiki**
+3. Conceptual Model in UML **In Wiki**
+4. Relational Schema in Text Format **In Wiki**
+5. Functional Dependencies **In Wiki**
 6. Normalization (if we make the relational schema fully normalized we can skip this step)
-7. Set up the DB
+7. Set up the DB **Done**
+    * `sql_scripts/create.sql`
+    * `sql_scripts/initialize.sql`
 8. Queries
 9. with 10, cleaning up the report and peer evaluations
