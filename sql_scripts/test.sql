@@ -3,7 +3,7 @@
 -- set up database
 
 \i sql_scripts/create.sql
-\i sql_scripts/intialize.sql
+\i sql_scripts/initialize.sql
 
 -- run tests
 
