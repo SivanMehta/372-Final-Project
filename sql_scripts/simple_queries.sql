@@ -40,11 +40,13 @@ FROM trips
 WHERE tripID = 2;
 
 \echo 'Receive payment'
-INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID) VALUES
-   ('3:33', '222 Ellsworth Ave', '1738 Craig St', '5.25', 6, 7);
-SELECT *
-FROM Trips
-WHERE tripID = 13;
+UPDATE Trips
+SET fare = 12.51
+where tripID = 3;
+
+UPDATE Trips
+SET driverID = 2
+where tripID = 3;
 
 \echo 'Update my car'
 UPDATE cars
@@ -57,3 +59,8 @@ FROM ratings
 INNER JOIN users on ratings.userid = users.userid
 WHERE ratings.userid = 3
 GROUP BY users.userid;
+
+\echo 'Customer'
+\echo 'indicate my location'
+INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID) VALUES
+   ('3:33', '222 Ellsworth Ave', '1738 Craig St', null, null, 7);
