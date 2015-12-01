@@ -83,4 +83,8 @@ BEGIN
     set    trip_timestamp = NOW()
     where  tripID = new.tripID;
     return new;
-END $_$ LANGUAGE 'plpgsql'
+END $_$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER update_trip_timestamp AFTER INSERT on Trips
+FOR EACH ROW
+EXECUTE PROCEDURE trip_stamp();
