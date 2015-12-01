@@ -10,6 +10,7 @@
 -- Triggers --
 --------------
 
+-- add a timestamp for new trips
 CREATE FUNCTION trip_stamp() RETURNS trigger as $_$
 BEGIN
     update Trips
