@@ -1,13 +1,13 @@
-tripID,trip_timestamp,duration,pickup,destination,fare,driverID,credit_cardID
-1,1:00:00 AM - 02/03/1995,20:35,1 Infinite Loop,5000 Forbes Ave.,1324,2,1
-2,12:00:00 PM - 02/05/1995,7:44,123 Sesame Street,7777 Fifth Ave.,123,2,2
-3,6:00:00 PM - 02/06/1995,35:19,1600 Pennsylvania Ave,9844 Harrison Avenue ,124,2,3
-4,5:00:00 PM - 02/07/1995,22:46,9844 Harrison Avenue ,7789 Olive Street ,512,2,4
-5,7:00:00 AM - 02/08/1995,9:15,7789 Olive Street ,1600 Pennsylvania Ave,12,3,5
-6,9:00:00 AM - 02/09/1995,7:38,7777 Fifth Ave.,123 Sesame Street,74,3,6
-7,12:30:00 AM - 02/10/1995,17:38,5000 Forbes Ave.,1 Infinite Loop,12,4,7
-8,9:00:00 AM - 02/11/1995,4:10,5560 Forves Ave,12 Main Street,6,4,8
-9,12:11:00 AM - 02/12/1995,3:15,1 Hacker Way,1313 Mocking Bird Lane,34,4,9
-10,6:07:06 AM - 02/13/1995,23:19,122 Yhatzee Road,7789 Olive Street ,87,5,10
-11,12:03:00 AM - 02/14/1995,11:11,1 Infinite Loop,5000 Carillian Point,7,6,11
-12,6:00:00 AM - 02/15/1995,22:22,1600 Pennsylvania Ave,122 Yhatzee Road,324,6,12
+trip_timestamp,duration,pickup,destination,fare,driverID,credit_cardID
+1:00:00 AM - 02/03/1995,20:35,1 Infinite Loop,5000 Forbes Ave.,1324.24,2,1
+12:00:00 PM - 02/05/1995,7:44,123 Sesame Street,7777 Fifth Ave.,123.85,2,2
+6:00:00 PM - 02/06/1995,35:19,1600 Pennsylvania Ave,9844 Harrison Avenue ,124.02,2,3
+5:00:00 PM - 02/07/1995,22:46,9844 Harrison Avenue ,7789 Olive Street ,512.29,2,4
+7:00:00 AM - 02/08/1995,9:15,7789 Olive Street ,1600 Pennsylvania Ave,12.27,3,5
+9:00:00 AM - 02/09/1995,7:38,7777 Fifth Ave.,123 Sesame Street,74.99,3,6
+12:30:00 AM - 02/10/1995,17:38,5000 Forbes Ave.,1 Infinite Loop,12.76,4,7
+9:00:00 AM - 02/11/1995,4:10,5560 Forves Ave,12 Main Street,6.67,4,8
+12:11:00 AM - 02/12/1995,3:15,1 Hacker Way,1313 Mocking Bird Lane,34.29,4,9
+6:07:06 AM - 02/13/1995,23:19,122 Yhatzee Road,7789 Olive Street ,87.18,5,10
+12:03:00 AM - 02/14/1995,11:11,1 Infinite Loop,5000 Carillian Point,17.38,6,11
+6:00:00 AM - 02/15/1995,22:22,1600 Pennsylvania Ave,122 Yhatzee Road,324.76,6,12
