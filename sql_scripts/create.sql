@@ -68,7 +68,7 @@ CREATE TABLE Trips
   pickup            varchar(50),
   destination       varchar(50),
   fare              float CHECK(fare > 0),
-  driverID          int REFERENCES Users (userID),
+  driverID          int REFERENCES Users (userID) CHECK(check_is_role(driverID, 'driver')),
   credit_cardID     int REFERENCES CreditCards (credit_cardID)
 );
 
