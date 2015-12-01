@@ -45,3 +45,8 @@ INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID)
 SELECT *
 FROM Trips
 WHERE tripID = '13';
+
+\echo 'Update my car'
+UPDATE cars
+SET status = 'XL'
+WHERE carID = '3';
