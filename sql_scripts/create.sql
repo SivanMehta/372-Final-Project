@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS Uber;
 CREATE DATABASE Uber;
 \c uber;
 
+
+
 -------------------------
 -- Create Users table
 -------------------------
@@ -14,6 +16,15 @@ CREATE TABLE Users
   picture      varchar(255),
   role         varchar(50)  NOT NULL
 );
+
+--------------------------------------
+-- Function to check a certain role --
+--------------------------------------
+
+CREATE FUNCTION check_is_role(integer, varchar) returns bool as $_$
+BEGIN
+  return (SELECT role from Users where userID = $1) = $2;
+END $_$ LANGUAGE 'plpgsql';
 
 -------------------------
 -- Create Cars table
@@ -35,11 +46,6 @@ CREATE TABLE Cars
 -------------------------
 -- Create CreditCards table
 -------------------------
-
-CREATE FUNCTION check_is_role(integer, varchar) returns bool as $_$
-BEGIN
-  return (SELECT role from Users where userID = $1) = $2;
-END $_$ LANGUAGE 'plpgsql';
 
 CREATE TABLE CreditCards
 (
