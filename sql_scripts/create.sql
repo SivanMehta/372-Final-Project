@@ -72,19 +72,3 @@ CREATE TABLE Ratings
   userID      int REFERENCES Users (userID),
   tripID      int REFERENCES Trips (tripID)
 );
-
---------------
--- Triggers --
---------------
-
-CREATE FUNCTION trip_stamp() RETURNS trigger as $_$
-BEGIN
-    update Trips
-    set    trip_timestamp = NOW()
-    where  tripID = new.tripID;
-    return new;
-END $_$ LANGUAGE 'plpgsql';
-
-CREATE TRIGGER update_trip_timestamp AFTER INSERT on Trips
-FOR EACH ROW
-EXECUTE PROCEDURE trip_stamp();
