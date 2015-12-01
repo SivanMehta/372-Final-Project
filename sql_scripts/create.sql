@@ -28,7 +28,7 @@ CREATE TABLE Cars
   year         varchar(50),
   color        varchar(50),
   picture      varchar(255),
-  seats        int,
+  seats        int CHECK(seats > 0),
   status       varchar(50)
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE Trips
   duration          varchar(50),
   pickup            varchar(50),
   destination       varchar(50),
-  fare              varchar(50),
+  fare              float CHECK(fare > 0),
   driverID          int REFERENCES Users (userID),
   credit_cardID     int REFERENCES CreditCards (credit_cardID)
 );
@@ -68,7 +68,7 @@ CREATE TABLE Trips
 CREATE TABLE Ratings
 (
   ratingID    SERIAL PRIMARY KEY,
-  rating      int NOT NULL,
+  rating      int NOT NULL CHECK(1 <= rating and rating <= 5),
   userID      int REFERENCES Users (userID),
   tripID      int REFERENCES Trips (tripID)
 );
