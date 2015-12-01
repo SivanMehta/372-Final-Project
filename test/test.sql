@@ -7,4 +7,4 @@
 
 -- run tests
 
-\i sql_scripts/trigger_tests.sql
+\i test/trigger_tests.sql
