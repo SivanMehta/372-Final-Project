@@ -32,21 +32,28 @@ WHERE users.role = 'driver';
 \echo 'get a ride destination'
 SELECT destination
 FROM trips
-WHERE tripID = '2'; -- really can be any trip
+WHERE tripID = 2; -- really can be any trip
 
 \echo 'get pickup destination'
 SELECT pickup
 FROM trips
-WHERE tripID = '2';
+WHERE tripID = 2;
 
 \echo 'Receive payment'
 INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID) VALUES
    '3:33', '222 Ellsworth Ave', '1738 Craig St', '5.25', 6, 7);
 SELECT *
 FROM Trips
-WHERE tripID = '13';
+WHERE tripID = 13;
 
 \echo 'Update my car'
 UPDATE cars
 SET status = 'XL'
-WHERE carID = '3';
+WHERE carID = 3;
+
+\echo 'see a customer rating'
+SELECT first_name, last_name, AVG(rating)
+FROM ratings
+INNER JOIN users on ratings.userid = users.userid
+WHERE ratings.userid = 3
+GROUP BY users.userid;
