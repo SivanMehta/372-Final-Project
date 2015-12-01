@@ -38,3 +38,10 @@ WHERE tripID = '2'; -- really can be any trip
 SELECT pickup
 FROM trips
 WHERE tripID = '2';
+
+\echo 'Receive payment'
+INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID) VALUES
+   '3:33', '222 Ellsworth Ave', '1738 Craig St', '5.25', 6, 7);
+SELECT *
+FROM Trips
+WHERE tripID = '13';
