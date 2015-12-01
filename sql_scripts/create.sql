@@ -22,7 +22,7 @@ CREATE TABLE Users
 CREATE TABLE Cars
 (
   carID        SERIAL PRIMARY KEY,
-  userID       int,
+  userID       int REFERENCES Users(userID),
   make         varchar(50),
   model        varchar(50),
   year         varchar(50),
@@ -42,7 +42,7 @@ CREATE TABLE CreditCards
   credit_card_number    varchar(50),
   expiration 			varchar(50),
   cvv2					varchar(50),
-  userID		    	int
+  userID		    	int REFERENCES Users(userID)
 );
 
 -------------------------
@@ -57,8 +57,8 @@ CREATE TABLE Trips
   pickup	   		varchar(50),
   destination  		varchar(50),
   fare         		varchar(50),
-  driverID     		int,
-  credit_cardID    	int
+  driverID     		int REFERENCES Users (userID),
+  credit_cardID    	int REFERENCES CreditCards (credit_cardID)
 );
 
 -------------------------
@@ -69,16 +69,16 @@ CREATE TABLE Ratings
 (
   ratingID    SERIAL PRIMARY KEY,
   rating      int NOT NULL,
-  userID      int,
-  tripID      int
+  userID      int REFERENCES Users (userID),
+  tripID      int REFERENCES Trips (tripID)
 );
 
 ----------------------
 -- Define foreign keys
 ----------------------
-ALTER TABLE Cars ADD CONSTRAINT FK_Cars_Users FOREIGN KEY (userID) REFERENCES Users (userID);
-ALTER TABLE CreditCards ADD CONSTRAINT FK_CreditCards_Customers FOREIGN KEY (userID) REFERENCES Users (userID);
-ALTER TABLE Trips ADD CONSTRAINT FK_Trips_Users FOREIGN KEY (driverID) REFERENCES Users (userID);
-ALTER TABLE Trips ADD CONSTRAINT FK_Trips_CreditCards FOREIGN KEY (credit_cardID) REFERENCES CreditCards (credit_cardID);
-ALTER TABLE Ratings ADD CONSTRAINT FK_Ratings_Users FOREIGN KEY (userID) REFERENCES Users (userID);
-ALTER TABLE Ratings ADD CONSTRAINT FK_Ratings_Trips FOREIGN KEY (tripID) REFERENCES Trips (tripID);
+-- ALTER TABLE Cars ADD CONSTRAINT FK_Cars_Users FOREIGN KEY (userID) REFERENCES Users (userID);
+-- ALTER TABLE CreditCards ADD CONSTRAINT FK_CreditCards_Customers FOREIGN KEY (userID) REFERENCES Users (userID);
+-- ALTER TABLE Trips ADD CONSTRAINT FK_Trips_Users FOREIGN KEY (driverID) REFERENCES Users (userID);
+-- ALTER TABLE Trips ADD CONSTRAINT FK_Trips_CreditCards FOREIGN KEY (credit_cardID) REFERENCES CreditCards (credit_cardID);
+-- ALTER TABLE Ratings ADD CONSTRAINT FK_Ratings_Users FOREIGN KEY (userID) REFERENCES Users (userID);
+-- ALTER TABLE Ratings ADD CONSTRAINT FK_Ratings_Trips FOREIGN KEY (tripID) REFERENCES Trips (tripID);
