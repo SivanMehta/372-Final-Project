@@ -36,13 +36,18 @@ CREATE TABLE Cars
 -- Create CreditCards table
 -------------------------
 
+CREATE FUNCTION check_is_customer(integer) returns bool as $_$
+BEGIN
+  return (SELECT role from Users where userID = $1) = 'customer';
+END $_$ LANGUAGE 'plpgsql';
+
 CREATE TABLE CreditCards
 (
   credit_cardID    	    SERIAL PRIMARY KEY,
   credit_card_number    varchar(50),
   expiration            varchar(50),
   cvv2                  varchar(50),
-  userID                int REFERENCES Users(userID)
+  userID                int REFERENCES Users(userID) CHECK(check_is_customer(userID))
 );
 
 -------------------------
