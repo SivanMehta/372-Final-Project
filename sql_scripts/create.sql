@@ -2,6 +2,25 @@ DROP DATABASE IF EXISTS Uber;
 CREATE DATABASE Uber;
 \c uber;
 
+--------------------------------------
+-- validation functions --
+--------------------------------------
+
+CREATE FUNCTION check_valid_role(varchar) returns bool as $_$
+BEGIN
+  return ( $1 in ('admin', 'driver', 'customer'));
+END $_$ LANGUAGE 'plpgsql';
+
+CREATE FUNCTION is_valid_role(integer, varchar) returns bool as $_$
+BEGIN
+  return ((SELECT role from Users where userID = $1) = $2 and check_valid_role($2));
+END $_$ LANGUAGE 'plpgsql';
+
+CREATE FUNCTION is_valid_status(varchar) returns bool as $_$
+BEGIN
+  return ( $1 in ('X', 'XL', 'Black'));
+END $_$ LANGUAGE 'plpgsql';
+
 -------------------------
 -- Create Users table
 -------------------------
@@ -14,20 +33,6 @@ CREATE TABLE Users
   picture      varchar(255),
   role         varchar(50)  NOT NULL
 );
-
---------------------------------------
--- Function to check a certain role --
---------------------------------------
-
-CREATE FUNCTION check_valid_role(varchar) returns bool as $_$
-BEGIN
-  return ( $1 in ('admin', 'driver', 'customer'));
-END $_$ LANGUAGE 'plpgsql';
-
-CREATE FUNCTION is_valid_role(integer, varchar) returns bool as $_$
-BEGIN
-  return ((SELECT role from Users where userID = $1) = $2 and check_valid_role($2));
-END $_$ LANGUAGE 'plpgsql';
 
 -------------------------
 -- Create Cars table
@@ -43,7 +48,7 @@ CREATE TABLE Cars
   color        varchar(50),
   picture      varchar(255),
   seats        int CHECK(seats > 0),
-  status       varchar(50)
+  status       varchar(50) CHECK(is_valid_status(status))
 );
 
 -------------------------
