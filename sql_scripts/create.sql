@@ -2,9 +2,9 @@ DROP DATABASE IF EXISTS Uber;
 CREATE DATABASE Uber;
 \c uber;
 
---------------------------------------
+--------------------------
 -- validation functions --
---------------------------------------
+--------------------------
 
 CREATE FUNCTION check_valid_role(varchar) returns bool as $_$
 BEGIN
@@ -88,6 +88,6 @@ CREATE TABLE Ratings
 (
   ratingID    SERIAL PRIMARY KEY,
   rating      int NOT NULL CHECK(1 <= rating and rating <= 5),
-  userID      int REFERENCES Users (userID),
+  userID      int REFERENCES Users (userID) CHECK( is_valid_role(userID, 'driver') or is_valid_role(userID, 'customer') ),
   tripID      int REFERENCES Trips (tripID)
 );
