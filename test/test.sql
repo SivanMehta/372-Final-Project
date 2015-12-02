@@ -8,3 +8,4 @@
 -- run tests
 
 \i test/trigger_tests.sql
+\i sql_scripts/simple_queries.sql
