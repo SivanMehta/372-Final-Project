@@ -2,8 +2,6 @@ DROP DATABASE IF EXISTS Uber;
 CREATE DATABASE Uber;
 \c uber;
 
-
-
 -------------------------
 -- Create Users table
 -------------------------
@@ -21,9 +19,14 @@ CREATE TABLE Users
 -- Function to check a certain role --
 --------------------------------------
 
-CREATE FUNCTION check_is_role(integer, varchar) returns bool as $_$
+CREATE FUNCTION check_valid_role(varchar) returns bool as $_$
 BEGIN
-  return (SELECT role from Users where userID = $1) = $2;
+  return ( $1 in ('admin', 'driver', 'customer'));
+END $_$ LANGUAGE 'plpgsql';
+
+CREATE FUNCTION is_valid_role(integer, varchar) returns bool as $_$
+BEGIN
+  return ((SELECT role from Users where userID = $1) = $2 and check_valid_role($2));
 END $_$ LANGUAGE 'plpgsql';
 
 -------------------------
@@ -53,7 +56,7 @@ CREATE TABLE CreditCards
   credit_card_number    varchar(50),
   expiration            varchar(50),
   cvv2                  varchar(50),
-  userID                int REFERENCES Users(userID) CHECK(check_is_role(userID, 'customer'))
+  userID                int REFERENCES Users(userID) CHECK(is_valid_role(userID, 'customer'))
 );
 
 -------------------------
@@ -68,7 +71,7 @@ CREATE TABLE Trips
   pickup            varchar(50),
   destination       varchar(50),
   fare              float CHECK(fare > 0),
-  driverID          int REFERENCES Users (userID) CHECK(check_is_role(driverID, 'driver')),
+  driverID          int REFERENCES Users (userID) CHECK(is_valid_role(driverID, 'driver')),
   credit_cardID     int REFERENCES CreditCards (credit_cardID)
 );
 
