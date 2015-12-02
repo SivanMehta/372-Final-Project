@@ -31,7 +31,7 @@ CREATE TABLE Users
   first_name   varchar(50)  NOT NULL,
   last_name    varchar(50)  NOT NULL,
   picture      varchar(255),
-  role         varchar(50)  NOT NULL
+  role         varchar(50) NOT NULL CHECK(check_valid_role(role))
 );
 
 -------------------------
