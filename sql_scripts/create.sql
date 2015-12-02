@@ -49,7 +49,7 @@ CREATE TABLE Cars
 
 CREATE TABLE CreditCards
 (
-  credit_cardID    	    SERIAL PRIMARY KEY,
+  credit_cardID         SERIAL PRIMARY KEY,
   credit_card_number    varchar(50),
   expiration            varchar(50),
   cvv2                  varchar(50),
