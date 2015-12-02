@@ -61,6 +61,6 @@ WHERE ratings.userid = 3
 GROUP BY users.userid;
 
 \echo 'Customer'
-\echo 'indicate my location'
+\echo 'indicate my location and destination'
 INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID) VALUES
    ('3:33', '222 Ellsworth Ave', '1738 Craig St', null, null, 7);
