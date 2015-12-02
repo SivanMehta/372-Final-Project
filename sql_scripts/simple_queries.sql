@@ -70,6 +70,6 @@ SELECT concat(first_name, ' ', last_name) AS name, picture from Users
 WHERE role = 'driver';
 
 \echo 'create a new credit card'
-INSERT INTO CreditCars (credit_card_number, expiration, cvv2, userID) VALUES
+INSERT INTO CreditCards (credit_card_number, expiration, cvv2, userID) VALUES
    ('6011780460242176', NOW(), '123', 10);
 
