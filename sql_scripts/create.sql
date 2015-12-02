@@ -60,7 +60,7 @@ CREATE TABLE CreditCards
   credit_cardID         SERIAL PRIMARY KEY,
   credit_card_number    varchar(50),
   expiration            varchar(50),
-  cvv2                  varchar(50),
+  cvv2                  int CHECK(100 <= cvv2 and cvv2 <= 999),
   userID                int REFERENCES Users(userID) CHECK(is_valid_role(userID, 'customer'))
 );
 

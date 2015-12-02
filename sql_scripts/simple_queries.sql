@@ -71,5 +71,5 @@ WHERE role = 'driver';
 
 \echo 'create a new credit card'
 INSERT INTO CreditCards (credit_card_number, expiration, cvv2, userID) VALUES
-   ('6011780460242176', NOW(), '123', 10);
+   ('6011780460242176', NOW(), 123, 10);
 
