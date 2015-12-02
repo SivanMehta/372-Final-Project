@@ -68,3 +68,8 @@ INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID)
 \echo 'see all the drivers'
 SELECT concat(first_name, ' ', last_name) AS name, picture from Users
 WHERE role = 'driver';
+
+\echo 'create a new credit card'
+INSERT INTO CreditCars (credit_card_number, expiration, cvv2, userID) VALUES
+   ('6011780460242176', NOW(), '123', 10);
+
