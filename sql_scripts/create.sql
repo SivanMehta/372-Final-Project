@@ -48,7 +48,9 @@ CREATE TABLE Cars
   color        varchar(50),
   picture      varchar(255),
   seats        int CHECK(seats > 0),
-  status       varchar(50) CHECK(is_valid_status(status))
+  status       varchar(50) CHECK(is_valid_status(status)),
+  currentLat   varchar(50),
+  currentLong  varchar(50)
 );
 
 -------------------------
