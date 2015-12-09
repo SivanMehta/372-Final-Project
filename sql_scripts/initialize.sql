@@ -1,6 +1,6 @@
 \c uber
 
-\copy users(first_name, last_name, picture, role)                           FROM 'data/Users.csv'        delimiter ',' csv header
+\copy users(first_name, last_name, picture, role, avg_rating)                           FROM 'data/Users.csv'        delimiter ',' csv header
 \copy cars(userID, make, model, year, color, picture, seats, status, currentLat, currentLong)        FROM 'data/Cars.csv'         delimiter ',' csv header
 \copy creditcards(credit_card_number, expiration, cvv2, userID)            FROM 'data/Credit_cards.csv' delimiter ',' csv header
 \copy trips(trip_timestamp,duration,pickup,destination,fare,driverID,credit_cardID)       FROM 'data/Trips.csv'        delimiter ',' csv header
