@@ -1,7 +1,6 @@
 
 # 1. Find the closest car
-# 2. Assume you make a trip lasting 15 minutes
-# 3. Pay with customers first credit card
+# 2. Pay with customers first credit card
 
 import helpers
 import math
@@ -70,4 +69,4 @@ VALUES (
 );
 ''', (str(distance * 2), current_address, destination, fare, closest.data[1]))
 
-print insertion
+
