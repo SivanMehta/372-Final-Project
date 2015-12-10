@@ -63,7 +63,7 @@ GROUP BY users.userid;
 \echo 'Customer'
 \echo 'indicate my location and destination'
 INSERT INTO Trips (duration, pickup, destination, fare, driverID, credit_cardID) VALUES
-   ('3:33', '222 Ellsworth Ave', '1738 Craig St', null, null, 7);
+   ('3:33', '222 Ellsworth Ave', '1738 Craig St', 14.50, 5, 7);
 
 \echo 'see all the drivers'
 SELECT concat(first_name, ' ', last_name) AS name, picture from Users
