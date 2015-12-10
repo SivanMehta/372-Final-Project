@@ -11,6 +11,7 @@ current_address = "5000 Forbes"
 current_position = [40.4433, -79.9436]
 destination = "PNC Park"
 destination_position = [40.4469, -80.0058]
+customer = '9'
 
 # find all the cars in the field
 helpers.cur.execute(
@@ -18,7 +19,7 @@ helpers.cur.execute(
 SELECT * from Cars;
 ''')
 
-# find the closest one
+# 1. find the closest one
 
 distance = helpers.distance(current_position, destination_position) # assuming 30mph in cities
 base_fee = 5
@@ -44,3 +45,14 @@ for row in rows:
 print("Closest Car:")
 print(closest.data)
 
+# 3. Find the customer's first credit card
+query = helpers.cur.mogrify(
+'''
+SELECT * from creditcards
+WHERE userid = %s;
+''', (customer))
+
+helpers.cur.execute(query)
+
+credit_card = helpers.cur.fetchall()[0]
+print credit_card
