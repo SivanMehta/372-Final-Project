@@ -11,7 +11,7 @@ current_address = "5000 Forbes"
 current_position = [40.4433, -79.9436]
 destination = "PNC Park"
 destination_position = [40.4469, -80.0058]
-customer = '9'
+customer = 9
 
 # find all the cars in the field
 helpers.cur.execute(
@@ -33,10 +33,10 @@ min_car = -1
 
 for row in rows:
     driver = row[1]
-    distance = helpers.distance(row[9:11], current_position)
+    car_distance = helpers.distance(row[9:11], current_position)
 
     if(distance < min_distance ):
-        min_distance  = distance
+        min_distance  = car_distance
         min_car = driver
         closest.data = row
 
@@ -50,9 +50,24 @@ query = helpers.cur.mogrify(
 '''
 SELECT * from creditcards
 WHERE userid = %s;
-''', (customer))
+''', (str(customer)))
 
 helpers.cur.execute(query)
 
 credit_card = helpers.cur.fetchall()[0]
-print credit_card
+
+print ((str(distance * 2), current_address, destination, fare, closest.data[1]))
+
+insertion = helpers.cur.mogrify(
+'''
+INSERT INTO trips (duration, pickup, destination, fare, driverID)
+VALUES (
+    %s,
+    %s,
+    %s,
+    %s,
+    %s
+);
+''', (str(distance * 2), current_address, destination, fare, closest.data[1]))
+
+print insertion
