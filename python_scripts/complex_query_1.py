@@ -12,15 +12,14 @@ destination = "PNC Park"
 destination_position = [40.4469, -80.0058]
 customer = 9
 
-# find all the cars in the field
+# 1. Find the closest car
+
 helpers.cur.execute(
 '''
 SELECT * from Cars;
 ''')
 
-# 1. find the closest one
-
-distance = helpers.distance(current_position, destination_position) # assuming 30mph in cities
+distance = helpers.distance(current_position, destination_position)
 base_fee = 5
 fare = distance * 2 + base_fee # assuming 30mph in cities
 
@@ -34,17 +33,17 @@ for row in rows:
     driver = row[1]
     car_distance = helpers.distance(row[9:11], current_position)
 
-    if(distance < min_distance ):
+    if(car_distance < min_distance ):
         min_distance  = car_distance
         min_car = driver
         closest.data = row
+        
+    print("%30s : %.2f miles away" % (row[2] + " " + row[3], car_distance))
 
-    print("%30s : %.2f miles away" % (row[2] + " " + row[3], distance))
-
-print("Closest Car:")
+print("Closest Car: %f miles" % min_distance)
 print(closest.data)
 
-# 3. Find the customer's first credit card
+# 2. Find the customer's first credit card
 query = helpers.cur.mogrify(
 '''
 SELECT * from creditcards
@@ -55,19 +54,14 @@ helpers.cur.execute(query)
 
 credit_card = helpers.cur.fetchall()[0]
 
-print ((str(distance * 2), current_address, destination, fare, closest.data[1]))
+# print((str(distance * 2), current_address, destination, fare, closest.data[1]))
 
 insertion = helpers.cur.mogrify(
 '''
 INSERT INTO trips (duration, pickup, destination, fare, driverID, credit_cardid)
-VALUES (
-    %s,
-    %s,
-    %s,
-    %s,
-    %s,
-    %s
-);
+VALUES ( %s, %s, %s, %s, %s, %s);
 ''', (str(distance * 2), current_address, destination, fare, closest.data[1], credit_card[0]))
 
 helpers.cur.execute(insertion)
+
+print("Created Trip successfully!")
