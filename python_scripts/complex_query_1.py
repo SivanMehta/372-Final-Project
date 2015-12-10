@@ -66,3 +66,18 @@ VALUES ( %s, %s, %s, %s, %s, %s);
 helpers.cur.execute(insertion)
 
 print("Created Trip successfully!")
+
+# need to rate each other
+
+# get most id of most recent trip with the driver's id
+
+query = helpers.cur.mogrify(
+'''
+SELECT * from trips
+WHERE driverid = %s
+ORDER BY tripid;
+''', (str(closest.data[1])))
+
+helpers.cur.execute(query)
+rows = helpers.cur.fetchall()
+tripID = rows[0][0]
