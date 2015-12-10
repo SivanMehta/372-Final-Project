@@ -59,14 +59,15 @@ print ((str(distance * 2), current_address, destination, fare, closest.data[1]))
 
 insertion = helpers.cur.mogrify(
 '''
-INSERT INTO trips (duration, pickup, destination, fare, driverID)
+INSERT INTO trips (duration, pickup, destination, fare, driverID, credit_cardid)
 VALUES (
+    %s,
     %s,
     %s,
     %s,
     %s,
     %s
 );
-''', (str(distance * 2), current_address, destination, fare, closest.data[1]))
+''', (str(distance * 2), current_address, destination, fare, closest.data[1], credit_card[0]))
 
-
+helpers.cur.execute(insertion)
