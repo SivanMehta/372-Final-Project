@@ -1,6 +1,7 @@
 
 # 1. Find the closest car
 # 2. Pay with customers first credit card
+# 3. Have the Driver and Customer rate each other
 
 import helpers
 import math
@@ -37,7 +38,7 @@ for row in rows:
         min_distance  = car_distance
         min_car = driver
         closest.data = row
-        
+
     print("%30s : %.2f miles away" % (row[2] + " " + row[3], car_distance))
 
 print("Closest Car: %f miles" % min_distance)
