@@ -80,4 +80,25 @@ ORDER BY tripid;
 
 helpers.cur.execute(query)
 rows = helpers.cur.fetchall()
+
 tripID = rows[0][0]
+driverID = closest.data[1]
+# already have customer from above
+
+insertion = helpers.cur.mogrify(
+'''
+-- create customer's rating of the driver
+INSERT INTO ratings (rating, userid, tripid)
+VALUES ( %s, %s, %s);
+
+-- create driver's rating of the customer
+INSERT INTO ratings (rating, userid, tripid)
+VALUES ( %s, %s, %s);
+
+''', (
+    5, driverID, tripID,
+    4, customer, tripID ))
+
+helpers.cur.execute(insertion)
+
+print("Inserted Rating successfully!")
